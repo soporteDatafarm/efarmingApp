@@ -1,5 +1,7 @@
 {
   "name": "efarming",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

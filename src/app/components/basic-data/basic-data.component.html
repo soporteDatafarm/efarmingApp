@@ -1,0 +1,110 @@
+<ion-grid>
+  <ion-title class="ion-text-center">
+    Información Básica
+  </ion-title>
+  <ion-row>
+    <ion-col size="4">
+      <ion-item>
+        <ion-label>Codigo: {{farm.code}}</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="8">
+      <ion-item>
+        <ion-label>Nombre:</ion-label>
+        <ion-input placeholder="{{farm.name}}" type="text" [(ngModel)]="farm.name"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="4">
+      <ion-item>
+        <ion-label position="floating">Departamento:</ion-label>
+        <ion-select placeholder="{{selectedDepartment}}" [(ngModel)]="farm.departmentId">
+          <ion-select-option *ngFor="let dep of departments" [value]="dep.id" selected>
+            {{dep.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col size="4">
+      <ion-item>
+        <ion-label position="floating">Municipio:</ion-label>
+        <ion-select placeholder="{{selectedMunicipality}}" [(ngModel)]="farm.municipalityId" (ionChange)="onSelectedMunicipality()">
+          <ion-select-option *ngFor="let mun of municipalities" [value]="mun.id" selected>
+            {{mun.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col size="4">
+      <ion-item>
+        <ion-label position="floating">Vereda:</ion-label>
+        <!--<ion-select placeholder="{{selectedVillage}}" [(ngModel)]="farm.villageId"></ion-select>-->
+        <ion-select placeholder="{{selectedVillage}}" [(ngModel)]="selectedVillageId">
+          <ion-select-option *ngFor="let vill of villages" [value]="vill.id" selected>
+            {{vill.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="4">
+      <ion-item>
+        <ion-label>Longitud:</ion-label>
+        <ion-input placeholder="{{farm.longitude}}" type="text" [(ngModel)]="farm.longitude"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="4">
+      <ion-item>
+        <ion-label>Latitud:</ion-label>
+        <ion-input placeholder="{{farm.latitude}}" type="text" [(ngModel)]="farm.latitude"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="4" class="ion-text-center">
+      <ion-button color="warning" class="ion-button-class ion-margin" fill="solid">ubicación GPS &nbsp; <ion-icon name="location-outline"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="8">
+      <ion-item>
+        <ion-label>Programas:&nbsp;&nbsp;&nbsp;&nbsp; CAFICAUCA FLO CONV</ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="4">
+      <ion-item>
+        <ion-label>Altitud: {{farm.elevation}}</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">Tipo de propietario:</ion-label>
+        <ion-select placeholder="{{selectedOwnershipType}}" [(ngModel)]="farm.ownershipTypeId">
+          <ion-select-option *ngFor="let owner of ownershipTypes" [value]="owner.id" selected>
+            {{owner.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">Cooperativa:</ion-label>
+        <ion-select placeholder="{{selectedCooperative}}" [(ngModel)]="farm.cooperativeId">
+          <ion-select-option *ngFor="let coop of cooperatives" [value]="coop.id" selected>
+            {{coop.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-vertical">
+    <ion-col>
+      <ion-button color="primary" class="ion-button-class ion-margin" fill="solid" (click)="onSave()">Guardar &nbsp; <ion-icon name="save-outline"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row>
+  
+</ion-grid>

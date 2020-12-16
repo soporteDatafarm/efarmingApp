@@ -13,34 +13,34 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Inicio',
+      url: '/dashboard',
+      icon: 'speedometer'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Fincas',
+      url: '/farms-search',
+      icon: 'home'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Fertilizantes',
+      url: '/farm',
+      icon: 'leaf'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Calidad',
+      url: '/dashboard',
+      icon: 'checkmark-circle'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Reportes Calidad',
+      url: '/dashboard',
+      icon: 'trending-up'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Cerrar sesion',
+      url: '/login',
+      icon: 'log-out'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

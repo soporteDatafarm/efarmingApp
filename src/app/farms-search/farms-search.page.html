@@ -1,0 +1,150 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+    <div class="landing-header ion-padding">
+      <ion-title color="light" class="ion-float-left">Caficauca</ion-title>
+      <img src="../../assets/img/efarming_logo.png" alt="efarming" class="logo-header ion-float-rigth">
+    </div>
+    
+  </ion-toolbar>
+</ion-header>
+
+<!--<ion-content fullscreen [fullscreen]="true">-->
+<ion-content>
+  <ion-grid class="bgBoxes">
+    <ion-row>
+      <ion-col>
+        <ion-title>
+          Filtros
+        </ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col size="4">
+        <ion-select placeholder="Departamento" [(ngModel)]="selectedDepartment">
+          <ion-select-option *ngFor="let dep of departments" [value]="dep.id" selected>
+            {{dep.name}}
+          </ion-select-option>
+        </ion-select>
+        <!--<div class="form-group">
+          <label for="department">Departamento</label>
+          <select class="form-control" id="department" [(ngModel)]="selectedDepartment">
+            <option *ngFor="let dep of departments" [value]="dep.id" selected>
+              {{dep.name}}
+            </option>
+          </select>
+        </div>-->
+      </ion-col>
+      <ion-col size="4">
+        <ion-select placeholder="Municipio" [(ngModel)]="selectedMunicipality" (ionChange)="onSelectedMunicipality()">
+          <ion-select-option *ngFor="let mun of municipalities" [value]="mun.id" selected>
+            {{mun.name}}
+          </ion-select-option>
+        </ion-select>
+        <!--<div class="form-group">
+          <label for="municipality">Municipio</label>
+          <select class="form-control" id="municipality" [(ngModel)]="selectedMunicipality">
+            <option *ngFor="let mun of municipalities" [value]="mun.id" selected>
+              {{mun.name}}
+            </option>
+          </select>
+        </div>-->
+      </ion-col>
+      <ion-col size="4">
+        <!--<ion-select placeholder="Vereda" (focus)="onSelectedMunicipality()" [(ngModel)]="selectedVillage">-->
+        <ion-select placeholder="Vereda" [(ngModel)]="selectedVillage">
+          <ion-select-option *ngFor="let vill of villages" [value]="vill.id" selected>
+            {{vill.name}}
+          </ion-select-option>
+        </ion-select>
+        <!--<div class="form-group">
+          <label for="village">Vereda</label>
+          <select class="form-control" id="village" (focus)="onSelectedMunicipality()" [(ngModel)]="selectedVillage">
+            <option *ngFor="let vill of villages" [value]="vill.id" selected>
+              {{vill.name}}
+            </option>
+          </select>
+        </div>-->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-searchbar [(ngModel)]="searchCode" placeholder="Código"></ion-searchbar>
+      </ion-col>
+      <ion-col size="5">
+        <ion-searchbar [(ngModel)]="searchName" placeholder="Nombre de la finca"></ion-searchbar>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button color="success" class="ion-button-class ion-margin" fill="solid" (click)="onSubmit()">Buscar</ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+  <br>
+  <ion-grid class="bgBoxes">
+    <!--<ion-title>
+      Resultados de la busqueda:
+    </ion-title>
+    <ion-virtual-scroll [items]="resultsFarms" approxItemHeight="320px">
+      <ion-list>
+        <ion-item *virtualItem="let item; let itemBounds = bounds;">
+          <ion-chip>
+            <ion-label color="primary"><h4>{{item.code}} </h4></ion-label>
+          </ion-chip>
+          <ion-label><h4>{{item.name}} </h4></ion-label>
+          <ion-checkbox [(ngModel)]="item.selected" (ionChange)="updateSelected(item)" checked="item.selected" slot="end"></ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-virtual-scroll>-->
+    <ion-list>
+      <ion-list-header>
+        <ion-title>
+          Resultados de la busqueda:
+        </ion-title>
+      </ion-list-header>
+      <ion-item *ngFor="let rf of resultsFarms">
+        <ion-chip>
+          <ion-label color="primary"><h4>{{rf.code}}</h4></ion-label>
+        </ion-chip>
+        <ion-label><h4>{{rf.name}}</h4></ion-label>
+        <ion-checkbox [(ngModel)]="rf.selected" (ionChange)="updateSelected(rf)" checked="rf.selected" slot="end"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+  <br>
+  <ion-grid class="bgBoxes">
+    <!--<ion-title>
+      Fincas Seleccionadas:
+    </ion-title>
+    <ion-virtual-scroll [items]="selectedFarms" approxItemHeight="320px">
+      <ion-item *virtualItem="let sf">
+        <ion-chip>
+          <ion-label color="primary"><h4>{{sf.code}} </h4></ion-label>
+        </ion-chip>
+        <ion-label><h4>{{sf.name}} </h4></ion-label>
+      </ion-item>
+    </ion-virtual-scroll>-->
+    <ion-list>
+      <ion-list-header>
+        <ion-title>
+          Fincas Seleccionadas:
+        </ion-title>
+      </ion-list-header>
+      <ion-item *ngFor="let sf of selectedFarms">
+        <ion-chip>
+          <ion-label color="primary"><h4>{{sf.code}} </h4></ion-label>
+        </ion-chip>
+        <ion-label><h4>{{sf.name}} </h4></ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-row>
+      <ion-button color="primary" class="ion-button-class mt-2" fill="solid" (click)="downloadSelected()">Descargar Informacion</ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+<!--<ion-checkbox [(ngModel)]="sf.selectDwl" (ionChange)="downloadSelected(sf)" checked="sf.selectDwl"></ion-checkbox>-->

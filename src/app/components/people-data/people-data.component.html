@@ -1,0 +1,29 @@
+<ion-grid>
+  <ion-title>
+    Personas
+  </ion-title>
+  <ion-row>
+    <ion-col>
+      <ion-button color="warning">Nuevo</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-list>
+    <ion-list-header class="ion-text-center" color="success">
+      <ion-label>Identificación</ion-label>
+      <ion-label>Nombres</ion-label>
+      <ion-label>Apellidos</ion-label>
+      <ion-label>Relación</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let fm of familyMembers" class="ion-text-center">
+      <ion-label> {{ fm.identification }} </ion-label>
+      <ion-label> {{ fm.firstName }} </ion-label>
+      <ion-label> {{ fm.lastName }} </ion-label>
+      <ion-label> {{ fm.relationship }} </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-button color="primary" class="ion-button-class ion-margin" fill="solid">Guardar &nbsp; <ion-icon name="save-outline"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

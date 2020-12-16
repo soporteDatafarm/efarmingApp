@@ -1,0 +1,69 @@
+<ion-grid>
+  <ion-title class="ion-text-center">
+    Productividad
+  </ion-title>
+  <ion-row>
+    <ion-col>
+      <ion-button color="warning">Nuevo</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-list>
+    <ion-list-header class="ion-text-center" color="success">
+      <ion-label>Tipo de plantacion</ion-label>
+      <ion-label>Variedad de plantacion</ion-label>
+      <ion-label>Hectareas</ion-label>
+      <ion-label>Produccion estimada</ion-label>
+      <ion-label>Edad</ion-label>
+      <ion-label>Numero de Plantas</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let pv of plantationsView" class="ion-text-center">
+      <ion-label> {{ pv.plantationNames.plantationTypeName }} </ion-label>
+      <ion-label> {{ pv.plantationNames.plantationVarietyName }} </ion-label>
+      <ion-label> {{ pv.hectares }} </ion-label>
+      <ion-label> {{ pv.estimatedProduction }} </ion-label>
+      <ion-label> {{ pv.age }} </ion-label>
+      <ion-label> {{ pv.numberOfPlants }} </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-title class="ion-margin-vertical ion-text-center">
+    Información de productividad
+  </ion-title>
+  <ion-row>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label>Hectáreas totales de café: {{productivity.coffeeArea}} </ion-label>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label>Hectáreas totales: {{productivity.totalHectares}} </ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label>Hectáreas construidas:</ion-label>
+        <ion-input placeholder="{{productivity.infrastructureHectares}}" type="text" [(ngModel)]="productivity.infrastructureHectares"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label>Hectáreas protegidas:</ion-label>
+        <ion-input placeholder="{{productivity.forestProtectedHectares}}" type="text" [(ngModel)]="productivity.forestProtectedHectares"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label>Hectáreas de conservación:</ion-label>
+        <ion-input placeholder="{{productivity.conservationHectares}}" type="text" [(ngModel)]="productivity.conservationHectares"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6" class="ion-text-center">
+      <ion-button color="primary" class="ion-button-class ion-margin" fill="solid">Guardar &nbsp; <ion-icon name="save-outline"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
