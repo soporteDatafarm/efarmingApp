@@ -48,7 +48,7 @@ export class Contact{
         public topics: string,
         public userId: string,
         public contactTypeId: number,
-        public contactLocationId: number,
+        public contactLocation: string,
         public farmId: string
     ){
 

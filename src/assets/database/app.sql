@@ -386,6 +386,7 @@ CREATE TABLE IF NOT EXISTS "GroupedFertilizers" (
 	FOREIGN KEY("FarmId") REFERENCES "Farms"("Id")
 );
 CREATE TABLE IF NOT EXISTS "Projects" (
+	"Name" TEXT,
 	"ProjectTypeId"	TEXT,
 	"FarmId"	TEXT,
 	FOREIGN KEY("FarmId") REFERENCES "Farms"("Id"),
@@ -400,10 +401,9 @@ CREATE TABLE IF NOT EXISTS "Contacts" (
 	"Topics"	TEXT,
 	"UserId"	TEXT,
 	"ContactTypeId"	INTEGER,
-	"ContactLocationId"	INTEGER,
+	"ContactLocation"	TEXT,
 	"FarmId"	TEXT,
 	FOREIGN KEY("FarmId") REFERENCES "Farms"("Id"),
 	FOREIGN KEY("ContactTypeId") REFERENCES "ContactType"("Id"),
-	FOREIGN KEY("ContactLocationId") REFERENCES "ContactLocation"("Id"),
 	PRIMARY KEY("Id")
 );

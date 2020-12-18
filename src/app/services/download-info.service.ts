@@ -571,6 +571,7 @@ export class DownloadInfoService {
       if(FarmRes.projects.length > 0){
         for (let i = 0; i < FarmRes.projects.length; i++) {
           let project =  new Project(
+            FarmRes.projects[i].name,
             FarmRes.projects[i].id,
             FarmRes.id
           );
@@ -582,8 +583,9 @@ export class DownloadInfoService {
         for (let i = 0; i < FarmRes.contacts.length; i++) {
           let topics = '';
           if (FarmRes.contacts[i].topics.length > 0) {
-            for (let j = 0; j < FarmRes.contacts[i].topics.length; j++) {
-              topics += FarmRes.contacts[i].topics[j].name 
+            topics = FarmRes.contacts[i].topics[0].name
+            for (let j = 1; j < FarmRes.contacts[i].topics.length; j++) {
+              topics += ", " + FarmRes.contacts[i].topics[j].name 
             }
           }
           let contact =  new Contact(
@@ -595,7 +597,7 @@ export class DownloadInfoService {
             topics,
             FarmRes.contacts[i].userId,
             FarmRes.contacts[i].typeId,
-            FarmRes.contacts[i].locationId,
+            FarmRes.contacts[i].location.name,
             FarmRes.id
           );
           this.databaseService.syncContacts(contact);

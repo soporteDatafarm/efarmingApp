@@ -1,5 +1,13 @@
 <ion-grid>
-  <ion-title>
+  <ion-title class="ion-text-center">
     Proyectos
   </ion-title>
+  <ion-list>
+    <ion-list-header class="ion-text-center" color="success">
+      <ion-label>Nombre</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let proj of projects" class="ion-text-center">
+      <ion-label> {{ proj.name }} </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-grid>

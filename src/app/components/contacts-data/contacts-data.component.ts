@@ -31,7 +31,6 @@ export class ContactsDataComponent implements OnInit {
     this.databaseService.searchContacts(this._farmId).then((values) => {
       if(values != null && values != undefined){
         this.contacts = values
-        console.log(values)
       }
     }).catch((error) => {
       console.log(error)

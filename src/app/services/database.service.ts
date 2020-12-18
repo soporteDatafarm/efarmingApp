@@ -580,8 +580,9 @@ export class DatabaseService {
     }
 
     syncProjects(project: Project){
-      this.database.executeSql("INSERT INTO Projects (ProjectTypeId,FarmId) VALUES (?,?)",[project.projectTypeId,project.farmId]).then(() => {
+      this.database.executeSql("INSERT INTO Projects (Name,ProjectTypeId,FarmId) VALUES (?,?,?)",[project.name,project.projectTypeId,project.farmId]).then(() => {
         console.log("Inserted Projects");
+        //console.log(project)
       }).catch((err) => {
         console.log(err);
         console.log("Insert Error" + err);
@@ -589,7 +590,7 @@ export class DatabaseService {
     }
 
     syncContacts(contact: Contact){
-      this.database.executeSql("INSERT INTO Contacts (Id,Name,Date,Comment,ActionType,Topics,UserId,ContactTypeId,ContactLocationId,FarmId) VALUES (?,?,?,?,?,?,?,?,?,?)",
+      this.database.executeSql("INSERT INTO Contacts (Id,Name,Date,Comment,ActionType,Topics,UserId,ContactTypeId,ContactLocation,FarmId) VALUES (?,?,?,?,?,?,?,?,?,?)",
         [
           contact.id,
           contact.name,
@@ -599,7 +600,7 @@ export class DatabaseService {
           contact.topics,
           contact.userId,
           contact.contactTypeId,
-          contact.contactLocationId,
+          contact.contactLocation,
           contact.farmId
         ]
       ).then(() => {
@@ -1468,6 +1469,7 @@ export class DatabaseService {
           for (let i = 0; i < data.rows.length; i++) {
             projects.push(
               {
+                name: data.rows.item(i).Name,
                 projectTypeId: data.rows.item(i).ProjectTypeId,
                 farmId: data.rows.item(i).FarmId
               }
@@ -1493,7 +1495,7 @@ export class DatabaseService {
                 topics: data.rows.item(i).Topics,
                 userId: data.rows.item(i).UserId,
                 contactTypeId: data.rows.item(i).ContactTypeId,
-                contactLocationId: data.rows.item(i).ContactLocationId,
+                contactLocation: data.rows.item(i).ContactLocation,
                 farmId: data.rows.item(i).FarmId
               }
             );
@@ -1811,13 +1813,31 @@ export class DatabaseService {
                 topics: data.rows.item(i).Topics,
                 userId: data.rows.item(i).UserId,
                 contactTypeId: data.rows.item(i).ContactTypeId,
-                contactLocationId: data.rows.item(i).ContactLocationId,
+                contactLocation: data.rows.item(i).ContactLocation,
                 farmId: data.rows.item(i).FarmId
               }
             );
           }
         }
       return contacts;
+    }
+
+    async searchProjects(farmId:string) {
+      let projects: Project[] = [];
+      let sql = 'SELECT * FROM Projects WHERE FarmId="'+ farmId + '"';
+      let data = await this.database.executeSql(sql,[])
+        if(data.rows.length > 0){
+          for (let i = 0; i < data.rows.length; i++) {
+            projects.push(
+              {
+                name: data.rows.item(i).Name,
+                projectTypeId: data.rows.item(i).ProjectTypeId,
+                farmId: data.rows.item(i).FarmId
+              }
+            );
+          }
+        }
+      return projects;
     }
 
 

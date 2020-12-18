@@ -12,6 +12,7 @@ export class ProjectType{
 export class Project{
 
     constructor(
+        public name: string,
         public projectTypeId: string,
         public farmId: string
     ){

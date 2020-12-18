@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Fertilizantes',
-      url: '/farm',
+      url: '/dashboard',
       icon: 'leaf'
     },
     {

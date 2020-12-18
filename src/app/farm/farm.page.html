@@ -60,12 +60,12 @@
     <app-basic-data [farmId]="selectedFarm" *ngSwitchCase ="'basic-data'"></app-basic-data>
     <app-productivity-data [farmId]="selectedFarm" *ngSwitchCase ="'productivity-data'"></app-productivity-data>
     <app-people-data [farmId]="selectedFarm" *ngSwitchCase ="'people-data'"></app-people-data>
-    <app-projects-data *ngSwitchCase ="'projects-data'"></app-projects-data>
-    <app-photos-data *ngSwitchCase ="'photos-data'"></app-photos-data>
+    <app-projects-data [farmId]="selectedFarm" *ngSwitchCase ="'projects-data'"></app-projects-data>
+    <app-photos-data [farmId]="selectedFarm" *ngSwitchCase ="'photos-data'"></app-photos-data>
     <app-contacts-data [farmId]="selectedFarm" *ngSwitchCase ="'contacts-data'"></app-contacts-data>
   </section>
 
-  <ion-grid class="dashboard ion-margin ion-text-center">
+  <ion-grid class="dashboard ion-margin ion-text-center" *ngIf="tab == 'basic-data'">
     <ion-title>
       Información de Productividad
     </ion-title>
@@ -156,7 +156,7 @@
     </ion-row>
   </ion-grid>
   <br>
-  <ion-grid class="dashboard ion-margin ion-text-center">
+  <ion-grid class="dashboard ion-margin ion-text-center" *ngIf="tab == 'basic-data'">
     <ion-title>
       Ventas
     </ion-title>
@@ -184,7 +184,7 @@
     </ion-row>
   </ion-grid>
   <br>
-  <ion-grid class="dashboard ion-margin ion-text-center">
+  <ion-grid class="dashboard ion-margin ion-text-center" *ngIf="tab == 'basic-data'">
     <ion-title>
       Fertilizantes
     </ion-title>

@@ -52,7 +52,7 @@ export class DashboardPage implements OnInit {
         //this.loadInitInfo()
       }
       else{
-        this.presentLoading('Descargando datos',60000);
+        this.presentLoading('Descargando datos',35000);
         console.log("Entro al else del rdy");
         //this.cancelSubs();
 

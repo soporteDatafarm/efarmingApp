@@ -1,5 +1,5 @@
 <ion-grid>
-  <ion-title>
+  <ion-title class="ion-text-center">
     Contactos
   </ion-title>
   <ion-row>
@@ -9,18 +9,47 @@
   </ion-row>
   <ion-list>
     <ion-list-header class="ion-text-center" color="success">
-      <ion-label>Identificación</ion-label>
-      <ion-label>Nombres</ion-label>
-      <ion-label>Apellidos</ion-label>
-      <ion-label>Relación</ion-label>
+      <ion-label>Nombre</ion-label>
+      <ion-label>Sitio</ion-label>
+      <ion-label>Temas</ion-label>
+      <ion-label>Fecha</ion-label>
     </ion-list-header>
     <ion-item *ngFor="let con of contacts" class="ion-text-center">
       <ion-label> {{ con.name }} </ion-label>
-      <ion-label> {{ con.contactLocationId }} </ion-label>
+      <ion-label> {{ con.contactLocation }} </ion-label>
       <ion-label> {{ con.topics }} </ion-label>
-      <ion-label> {{ con.date }} </ion-label>
+      <ion-label> {{ con.date | date:'shortDate' }} </ion-label>
     </ion-item>
   </ion-list>
+  <!--<ion-row class="ion-text-center bgHeaderList">
+    <ion-col size="2">
+      <ion-label>Nombre</ion-label>
+    </ion-col>
+    <ion-col size="3">
+      <ion-label>Sitio</ion-label>
+    </ion-col>
+    <ion-col size="5">
+      <ion-label>Temas</ion-label>
+    </ion-col>
+    <ion-col size="2">
+      <ion-label>Fecha</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let con of contacts" class="ion-text-center">
+    <ion-col size="2">
+      <ion-label> {{ con.name }} </ion-label>
+    </ion-col>
+    <ion-col size="3">
+      <ion-label> {{ con.contactLocation }} </ion-label>
+    </ion-col>
+    <ion-col size="5">
+      <ion-label> {{ con.topics }} </ion-label>
+    </ion-col>
+    <ion-col size="2">
+      <ion-label> {{ con.date | date:'shortDate' }} </ion-label>
+    </ion-col>
+  </ion-row>-->
+
   <ion-row>
     <ion-col class="ion-text-center">
       <ion-button color="primary" class="ion-button-class ion-margin" fill="solid">Guardar &nbsp; <ion-icon name="save-outline"></ion-icon></ion-button>
